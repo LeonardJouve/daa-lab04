@@ -2,9 +2,7 @@ package ch.heigvd.iict.daa.template.database.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import androidx.room.TypeConverter
 import java.util.Calendar
-import java.util.Date
 
 @Entity
 data class Note (
