@@ -1,6 +1,8 @@
 package ch.heigvd.iict.daa.template
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -30,5 +32,33 @@ class MainActivity : AppCompatActivity() {
         // TODO ...
 
     }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+
+//            R.id.sort_creation_date -> {
+//                true
+//            }
+//
+//            R.id.sort_schedule_date -> {
+//                true
+//            }
+//
+//            R.id.generate_note -> {
+//                true
+//            }
+//
+//            R.id.delete_all -> {
+//                true
+//            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
 
 }
