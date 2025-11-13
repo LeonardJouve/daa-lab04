@@ -1,6 +1,29 @@
 <resources>
-    <string name="app_name">DAA lab XX</string>
+    <string name="app_name">DAA lab 04</string>
     <string name="welcome">Welcome to DAA !</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="icon">icon</string>
+    <plurals name="days">
+        <item quantity="one">in %d day</item>
+        <item quantity="other">in %d days</item>
+    </plurals>
+
+    <plurals name="weeks">
+        <item quantity="one">in %d week</item>
+        <item quantity="other">in %d weeks</item>
+    </plurals>
+
+    <plurals name="months">
+        <item quantity="one">in %d month</item>
+        <item quantity="other">in %d months</item>
+    </plurals>
+
+    <plurals name="years">
+        <item quantity="one">in %d year</item>
+        <item quantity="other">in %d years</item>
+    </plurals>
+
+    <string name="late">late</string>
+    <string name="today">today</string>
 </resources>
