@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DAA lab 04</string>
+    <string name="app_name">DAA lab XX</string>
     <string name="welcome">Welcome to DAA !</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -26,4 +26,9 @@
 
     <string name="late">late</string>
     <string name="today">today</string>
+    <string name="sort_dropdown">Trier</string>
+    <string name="sort_by_creation_date">Creation date</string>
+    <string name="sort_by_date">ETA</string>
+    <string name="generate_note">Generate</string>
+    <string name="del_all_notes">Delete all</string>
 </resources>
