@@ -4,11 +4,20 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import ch.heigvd.iict.daa.template.database.Repository
+import ch.heigvd.iict.daa.template.models.NotesViewModel
+import ch.heigvd.iict.daa.template.models.NotesViewModelFactory
 
 class MainActivity : AppCompatActivity() {
+    private val notesViewModel: NotesViewModel by viewModels {
+        NotesViewModelFactory((application as App).repository)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,21 +49,23 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
 
-//            R.id.sort_creation_date -> {
-//                true
-//            }
-//
-//            R.id.sort_schedule_date -> {
-//                true
-//            }
-//
-//            R.id.generate_note -> {
-//                true
-//            }
-//
-//            R.id.delete_all -> {
-//                true
-//            }
+            R.id.menu_sort_creation_date -> {
+                true
+            }
+
+            R.id.menu_sort_eta -> {
+                true
+            }
+
+            R.id.menu_actions_generate -> {
+                notesViewModel.generateANote()
+                true
+            }
+
+            R.id.menu_actions_delete_all -> {
+                notesViewModel.deleteAllNote()
+                true
+            }
 
             else -> super.onOptionsItemSelected(item)
         }

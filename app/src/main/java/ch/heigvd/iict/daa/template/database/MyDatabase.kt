@@ -8,7 +8,9 @@ import androidx.room.TypeConverter
 import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
 import ch.heigvd.iict.daa.template.database.dao.NoteDAO
+import ch.heigvd.iict.daa.template.database.dao.ScheduleDAO
 import ch.heigvd.iict.daa.template.database.entities.Note
+import ch.heigvd.iict.daa.template.database.entities.Schedule
 import java.util.Calendar
 import java.util.Date
 import kotlin.concurrent.thread
@@ -25,12 +27,13 @@ class CalendarConverter {
         date.time.time
 }
 
-@Database(entities = [Note::class],
+@Database(entities = [Note::class, Schedule::class],
     version = 1,
     exportSchema = true)
 @TypeConverters(CalendarConverter::class)
 abstract class MyDatabase : RoomDatabase() {
     abstract fun noteDAO() : NoteDAO
+    abstract fun scheduleDAO() : ScheduleDAO
     companion object {
         private var INSTANCE : MyDatabase? = null
         fun getDatabase(context: Context) : MyDatabase {
