@@ -3,6 +3,7 @@ package ch.heigvd.iict.daa.template
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +11,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import ch.heigvd.iict.daa.template.models.NotesViewModel
 import ch.heigvd.iict.daa.template.models.NotesViewModelFactory
+import ch.heigvd.iict.daa.template.views.ControlsFragment
 import ch.heigvd.iict.daa.template.views.NotesFragment
 
 class MainActivity : AppCompatActivity() {
@@ -27,8 +29,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment, NotesFragment())
+            .replace(R.id.fragment_notes, NotesFragment())
             .commit()
+
+        val controlsContainer = findViewById<View?>(R.id.fragment_controls)
+        if (controlsContainer != null) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_controls, ControlsFragment())
+                .commit()
+        }
+
 
         // comme edge2edge est activé, l'application doit garder un espace suffisant pour la barre système
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
