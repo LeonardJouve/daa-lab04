@@ -160,5 +160,16 @@ class NotesFragment : Fragment() {
         notesViewModel.allNotes.observe(viewLifecycleOwner) {value ->
             adapter.items = value
         }
+        notesViewModel.sortType.observe(viewLifecycleOwner) { value ->
+            adapter.items = when (value) {
+                NotesViewModel.SortType.CREATION_DATE ->
+                    adapter.items.sortedBy { it.note.creationDate }
+                NotesViewModel.SortType.ETA ->
+                    adapter.items.sortedWith(
+                        compareBy<NoteAndSchedule> { it.schedule == null }
+                            .thenBy { it.schedule?.date }
+                    )
+            }
+        }
     }
 }
