@@ -8,11 +8,9 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import ch.heigvd.iict.daa.template.database.Repository
 import ch.heigvd.iict.daa.template.models.NotesViewModel
 import ch.heigvd.iict.daa.template.models.NotesViewModelFactory
+import ch.heigvd.iict.daa.template.views.NotesFragment
 
 class MainActivity : AppCompatActivity() {
     private val notesViewModel: NotesViewModel by viewModels {
@@ -27,6 +25,10 @@ class MainActivity : AppCompatActivity() {
 
         // on spécifie le layout à afficher
         setContentView(R.layout.activity_main)
+
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment, NotesFragment())
+            .commit()
 
         // comme edge2edge est activé, l'application doit garder un espace suffisant pour la barre système
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->

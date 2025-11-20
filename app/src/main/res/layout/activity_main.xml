@@ -34,7 +34,6 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragment"
-            android:name="ch.heigvd.iict.daa.template.views.NotesFragment"
             android:layout_width="match_parent"
             android:layout_height="0dip"
             app:layout_constraintTop_toTopOf="parent"
