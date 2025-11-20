@@ -10,15 +10,19 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import ch.heigvd.iict.daa.template.App
 import ch.heigvd.iict.daa.template.R
 import ch.heigvd.iict.daa.template.database.entities.Note
 import ch.heigvd.iict.daa.template.database.entities.NoteAndSchedule
 import ch.heigvd.iict.daa.template.database.entities.Schedule
 import ch.heigvd.iict.daa.template.database.entities.State
 import ch.heigvd.iict.daa.template.database.entities.Type
+import ch.heigvd.iict.daa.template.models.NotesViewModel
+import ch.heigvd.iict.daa.template.models.NotesViewModelFactory
 import java.util.Calendar
 
 /**
@@ -27,6 +31,10 @@ import java.util.Calendar
  * create an instance of this fragment.
  */
 class NotesFragment : Fragment() {
+    private val notesViewModel: NotesViewModel by activityViewModels {
+        NotesViewModelFactory((requireActivity().application as App).repository)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -149,8 +157,8 @@ class NotesFragment : Fragment() {
         val adapter = MyRecyclerAdapter()
         recycler.adapter = adapter
         recycler.layoutManager = LinearLayoutManager(view.context)
-        adapter.items = listOf(NoteAndSchedule(Note(1,State.IN_PROGRESS,"bejrsr,","testts",
-            Calendar.getInstance(), Type.SHOPPING),null), NoteAndSchedule(Note(1,State.DONE,"dfhwaud","dada",
-            Calendar.getInstance(), Type.SHOPPING), Schedule(1, 1, Calendar.getInstance().apply { add(Calendar.HOUR_OF_DAY, 4) })))
+        notesViewModel.allNotes.observe(viewLifecycleOwner) {value ->
+            adapter.items = value
+        }
     }
 }
