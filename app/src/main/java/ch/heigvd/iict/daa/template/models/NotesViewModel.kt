@@ -1,5 +1,7 @@
 package ch.heigvd.iict.daa.template.models
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import ch.heigvd.iict.daa.template.database.Repository
@@ -12,8 +14,16 @@ import java.util.Calendar
 import kotlin.random.Random
 
 class NotesViewModel(private val repository: Repository) : ViewModel() {
+    enum class SortType { CREATION_DATE, ETA }
+    private val _sortType = MutableLiveData<SortType>(SortType.CREATION_DATE)
+
+    fun setSortType(sort: SortType) {
+        _sortType.postValue(sort)
+    }
+
     val allNotes = repository.allNotes
     val countNotes = repository.noteCount
+    val sortType: LiveData<SortType> = _sortType
 
     val titles = arrayOf(
         "Meeting Reminder",

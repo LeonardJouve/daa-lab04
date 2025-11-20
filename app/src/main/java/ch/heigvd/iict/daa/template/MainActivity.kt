@@ -62,10 +62,12 @@ class MainActivity : AppCompatActivity() {
         return when (item.itemId) {
 
             R.id.menu_sort_creation_date -> {
+                notesViewModel.setSortType(NotesViewModel.SortType.CREATION_DATE)
                 true
             }
 
             R.id.menu_sort_eta -> {
+                notesViewModel.setSortType(NotesViewModel.SortType.ETA)
                 true
             }
 
