@@ -22,7 +22,6 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- Contenu -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/appcontent"
         android:layout_width="0dp"
@@ -31,11 +30,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
-
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragment_notes"
             android:name="ch.heigvd.iict.daa.template.views.NotesFragment"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="0dip"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -43,11 +41,10 @@
             app:layout_constraintEnd_toStartOf="@id/fragment_controls"
         >
         </androidx.fragment.app.FragmentContainerView>
-
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragment_controls"
             android:name="ch.heigvd.iict.daa.template.views.NotesFragment"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="0dip"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -55,8 +52,5 @@
             app:layout_constraintEnd_toEndOf="parent"
             >
         </androidx.fragment.app.FragmentContainerView>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

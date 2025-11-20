@@ -31,4 +31,6 @@
     <string name="sort_by_date">ETA</string>
     <string name="generate_note">Generate</string>
     <string name="del_all_notes">Delete all</string>
+    <string name="generate">GENERATE</string>
+    <string name="delete">DELETE</string>
 </resources>
