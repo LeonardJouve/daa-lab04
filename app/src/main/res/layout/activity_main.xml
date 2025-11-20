@@ -33,7 +33,7 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragment"
+            android:id="@+id/fragment_notes"
             android:layout_width="match_parent"
             android:layout_height="0dip"
             app:layout_constraintTop_toTopOf="parent"
