@@ -158,18 +158,22 @@ class NotesFragment : Fragment() {
         recycler.adapter = adapter
         recycler.layoutManager = LinearLayoutManager(view.context)
         notesViewModel.allNotes.observe(viewLifecycleOwner) {value ->
-            adapter.items = value
+            adapter.items = sort(value, notesViewModel.sortType.value!!)
         }
         notesViewModel.sortType.observe(viewLifecycleOwner) { value ->
-            adapter.items = when (value) {
-                NotesViewModel.SortType.CREATION_DATE ->
-                    adapter.items.sortedBy { it.note.creationDate }
-                NotesViewModel.SortType.ETA ->
-                    adapter.items.sortedWith(
-                        compareBy<NoteAndSchedule> { it.schedule == null }
-                            .thenBy { it.schedule?.date }
-                    )
-            }
+            adapter.items = sort(adapter.items, value)
+        }
+    }
+
+    fun sort(items: List<NoteAndSchedule>, sortType: NotesViewModel.SortType): List<NoteAndSchedule> {
+        return when (sortType) {
+            NotesViewModel.SortType.CREATION_DATE ->
+                items.sortedBy { it.note.creationDate }
+            NotesViewModel.SortType.ETA ->
+                items.sortedWith(
+                    compareBy<NoteAndSchedule> { it.schedule == null }
+                        .thenBy { it.schedule?.date }
+                )
         }
     }
 }
