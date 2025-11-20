@@ -59,7 +59,7 @@ class NotesViewModel(private val repository: Repository) : ViewModel() {
                 scheduleId = null,
                 ownerId = 0,
                 date = Calendar.getInstance().apply {
-                    // Random date within ±30 days from now
+                    // Random date within +-30 days from now
                     add(Calendar.DAY_OF_YEAR, Random.nextInt(-30, 30))
                     add(Calendar.HOUR_OF_DAY, Random.nextInt(0, 24))
                     add(Calendar.MINUTE, Random.nextInt(0, 60))
